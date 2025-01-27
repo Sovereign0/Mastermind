@@ -1,0 +1,20 @@
+import discord
+from discord import app_commands
+from views import ChallengeView
+
+async def register_host_unravel(bot, bloody_dotty, games):
+    @bot.tree.command(name="host_unravel", description="Host a game of Unravel")
+    async def host_unravel(interaction: discord.Interaction, player: discord.Member):
+        if interaction.user.id in bloody_dotty.players or player.id in bloody_dotty.players:
+            await interaction.response.send_message("One of the players is already playing Bloody Dotty. Finish that game first.", ephemeral=True)
+            return
+
+        if player == bot.user:
+            await interaction.response.send_message("I can't play against myself, silly!", ephemeral=True)
+            return
+
+        if games:
+            await interaction.response.send_message("A game is already in progress. Finish the current game first.", ephemeral=True)
+            return
+
+        challenge_message = await interaction.channel.send(f'{player.mention}, do you want to play Unravel with {interaction.user.mention}?', view=ChallengeView(interaction.user, player, "Unravel", bot, games))
