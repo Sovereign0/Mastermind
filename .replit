@@ -28,4 +28,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python -m BEAUTYCON.beauty_contest"
+args = "python -m main.py"
