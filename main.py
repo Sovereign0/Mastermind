@@ -11,7 +11,7 @@ from bloody.guess_bd import register_guess_bd
 from bloody.resign_bd import register_resign_bd
 from bloody.cancel_bd import register_cancel_bd
 from bloody.list_bd import register_list_bd
-from bloody.view_bd import register_view_bd
+# View BD command temporarily removed
 from unravel.host_unravel import register_host_unravel
 from unravel.code_unravel import register_code_unravel
 from unravel.guess_unravel import register_guess_unravel
@@ -49,7 +49,6 @@ async def setup():
     await register_resign_bd(bot, games, player_games)
     await register_cancel_bd(bot, games, player_games)
     await register_list_bd(bot, games)
-    await register_view_bd(bot, games)
     
     # Register unravel commands
     await register_host_unravel(bot, games)
