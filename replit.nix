@@ -1,5 +1,6 @@
 {pkgs}: {
   deps = [
+    pkgs.git
     pkgs.zlib
     pkgs.tk
     pkgs.tcl
